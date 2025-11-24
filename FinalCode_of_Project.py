@@ -8,8 +8,6 @@ from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.metrics import root_mean_squared_error
-from sklearn.model_selection import cross_val_score
 
 MODEL_FILE = "model.pkl"
 PIPELINE_FILE = "pipeline.pkl"
