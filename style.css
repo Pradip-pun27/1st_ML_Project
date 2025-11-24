@@ -1,0 +1,66 @@
+:root{
+	--bg:#0f1724;
+	--card:#0b1020;
+	--accent:#7dd3fc;
+	--muted:#94a3b8;
+	--glass: rgba(255,255,255,0.03);
+}
+*{box-sizing:border-box}
+body{
+	margin:0;
+	font-family:Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+	background: linear-gradient(180deg,#071020 0%, #081226 50%, #0b1630 100%);
+	color: #e6eef8;
+	min-height:100vh;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	padding:2rem;
+}
+.container{width:100%;max-width:980px}
+.hero{ text-align:center;margin-bottom:1rem }
+.hero h1{margin:0;font-size:1.8rem;letter-spacing:-0.5px}
+.hero .lead{color:var(--muted);margin-top:0.35rem}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;padding:1.25rem;border:1px solid rgba(255,255,255,0.04);box-shadow:0 8px 30px rgba(2,6,23,0.6)}
+.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0.9rem}
+.field{display:flex;flex-direction:column}
+.field.full{grid-column:1/-1}
+.field label{font-size:0.85rem;margin-bottom:0.35rem;color:var(--muted)}
+.field input,.field select{background:var(--glass);border:1px solid rgba(255,255,255,0.04);padding:0.55rem 0.65rem;border-radius:8px;color:inherit;font-size:0.95rem}
+.field input::placeholder{color:#6b7280}
+
+/* Make select dropdown values match the dark theme so options are readable */
+.field select{
+	-webkit-appearance:none;
+	-moz-appearance:none;
+	appearance:none;
+	background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%),
+										linear-gradient(135deg, var(--muted) 50%, transparent 50%),
+										linear-gradient(to right, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+	background-position: calc(100% - 18px) calc(1em + 2px), calc(100% - 13px) calc(1em + 2px), center;
+	background-size: 6px 6px, 6px 6px, 100% 100%;
+	background-repeat: no-repeat;
+	padding-right: 2.2rem;
+}
+
+/* Options styling (may be limited on some platforms but helps in most browsers) */
+.field select option{
+	background: var(--card);
+	color: var(--muted);
+}
+
+/* Hide default IE/Edge dropdown arrow to use our custom one */
+.field select::-ms-expand{display:none}
+.actions{display:flex;gap:0.5rem;justify-content:flex-end;align-items:center}
+.actions.full{grid-column:1/-1;margin-top:0.4rem}
+.btn{background:linear-gradient(90deg,var(--accent),#60a5fa);border:none;color:#06202a;padding:0.6rem 0.9rem;border-radius:9px;font-weight:600;cursor:pointer}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(45,212,191,0.06)}
+.result{margin-top:1rem;padding:0.9rem;border-radius:8px;background:linear-gradient(90deg, rgba(45,212,191,0.06), rgba(125,211,252,0.03));border:1px solid rgba(45,212,191,0.08);color:#dffcff;font-weight:700}
+.note{margin-top:0.75rem;color:var(--muted);text-align:right}
+
+@media (max-width:720px){
+	.form-grid{grid-template-columns:1fr}
+	.actions{justify-content:space-between}
+}
+

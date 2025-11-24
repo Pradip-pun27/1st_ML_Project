@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Housing Price Predictor</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+	</head>
+	<body>
+		<main class="container">
+			<header class="hero">
+				<h1>California Housing Price Predictor</h1>
+				<p class="lead">Enter the housing features and get a predicted median house value.</p>
+			</header>
+
+			<section class="card">
+				<form action="/predict" method="post" class="form-grid">
+					<div class="field"><label for="longitude">Longitude</label><input type="number" step="0.0001" name="longitude" id="longitude" placeholder="-122.23" required></div>
+					<div class="field"><label for="latitude">Latitude</label><input type="number" step="0.0001" name="latitude" id="latitude" placeholder="37.88" required></div>
+					<div class="field"><label for="housing_median_age">Housing median age</label><input type="number" step="0.1" name="housing_median_age" id="housing_median_age" placeholder="41" required></div>
+					<div class="field"><label for="total_rooms">Total rooms</label><input type="number" step="1" name="total_rooms" id="total_rooms" placeholder="880" required></div>
+					<div class="field"><label for="total_bedrooms">Total bedrooms</label><input type="number" step="1" name="total_bedrooms" id="total_bedrooms" placeholder="129" required></div>
+					<div class="field"><label for="population">Population</label><input type="number" step="1" name="population" id="population" placeholder="322" required></div>
+					<div class="field"><label for="households">Households</label><input type="number" step="1" name="households" id="households" placeholder="126" required></div>
+					<div class="field"><label for="median_income">Median income</label><input type="number" step="0.01" name="median_income" id="median_income" placeholder="8.3252" required></div>
+
+					<div class="field full">
+						<label for="ocean_proximity">Ocean proximity</label>
+						<select name="ocean_proximity" id="ocean_proximity" required>
+							<option value="<1H OCEAN">&lt;1H OCEAN</option>
+							<option value="INLAND">INLAND</option>
+							<option value="ISLAND">ISLAND</option>
+							<option value="NEAR BAY">NEAR BAY</option>
+							<option value="NEAR OCEAN">NEAR OCEAN</option>
+						</select>
+					</div>
+
+					<div class="actions full">
+						<button type="submit" class="btn">Predict</button>
+						<button type="reset" class="btn btn-ghost">Reset</button>
+					</div>
+				</form>
+
+				{% if prediction_text %}
+				<div class="result">
+					{{ prediction_text }}
+				</div>
+				{% endif %}
+
+				<footer class="note">
+					<small>Tip: use realistic values from the California housing dataset for best results.</small>
+				</footer>
+			</section>
+		</main>
+	</body>
+</html>
+
